@@ -84,11 +84,6 @@ private:
 	frc::DigitalInput m_sensor { Constants::Shooter::k_sensor_id };
 	frc::DigitalInput m_ele_limit { Constants::Shooter::k_limit_id };
 	
-	// This command isn't written by a factory because it is always
-	// the same (no parameter binding).
-	frc2::FunctionalCommand zero_elevator;
-	frc2::FunctionalCommand pickup;
-	
 	void track(units::meter_t dist);
 	double dist_to_setpoint(units::meter_t dist);
 };

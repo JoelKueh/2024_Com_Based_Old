@@ -8,36 +8,6 @@
 #include <frc2/command/Commands.h>
 
 Shooter::Shooter()
-	: zero_elevator(
-		[this]() {
-			m_ele_motor.Set(-1.0);
-			m_ele_motor.EnableSoftLimit(
-				rev::CANSparkMax::SoftLimitDirection::kReverse,
-				false
-			);
-		},
-		[]() {},
-		[this](bool interrupted) {
-			m_ele_motor.Set(0.0);
-			m_ele_motor.SetSoftLimit(
-				rev::CANSparkMax::SoftLimitDirection::kReverse,
-				false
-			);
-		},
-		[this]() { return m_ele_limit.Get(); },
-		{this}),
-	pickup(
-		[this]() {
-			m_top_motor.Set(1.0);
-			m_low_motor.Set(1.0);
-		},
-		[]() {},
-		[this](bool interrupted) {
-			m_top_motor.Set(0.0);
-			m_low_motor.Set(0.0);
-		},
-		[this]() { return has_note(); },
-		{this})
 {
 	m_left_motor.SetInverted(false);
 	m_right_motor.SetInverted(true);
